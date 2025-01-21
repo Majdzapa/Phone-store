@@ -2,18 +2,14 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'
-        jdk 'Java 17'
-    }
-
-    environment {
-        SONAR_TOKEN = credentials('sonar-token') // ID Jenkins pour le token SonarQube
+        maven 'Maven' // Nom de Maven configuré dans Jenkins
+        jdk 'Java 17' // Nom de Java 17 configuré dans Jenkins
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Majdzapa/Phone-store.git'
+                checkout scm
             }
         }
 
@@ -27,7 +23,6 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-
             post {
                 always {
                     junit '**/target/surefire-reports/*.xml'
@@ -35,24 +30,18 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('Code Analysis with SonarQube') {
             steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=phoneStore -Dsonar.login=$SONAR_TOKEN'
+                withSonarQubeEnv('SonarQube') { // Remplacez "SonarQube" par le nom configuré dans Jenkins
+                    sh 'mvn sonar:sonar'
                 }
-            }
-        }
-
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t phoneStore:latest .'
             }
         }
     }
 
     post {
         always {
-            echo 'Pipeline finished.'
+            echo 'Pipeline completed.'
         }
     }
 }
