@@ -33,7 +33,8 @@ pipeline {
         stage('Code Analysis with SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') { // Remplacez "SonarQube" par le nom configuré dans Jenkins
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn sonar:sonar -Dsonar.token=sqa_cc1c5ce0eeacb6d87b991434dec1de83805d8e5f
+                    '
                 }
             }
         }
