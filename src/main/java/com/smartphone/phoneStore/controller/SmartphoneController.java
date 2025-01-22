@@ -26,6 +26,7 @@ public class SmartphoneController {
         return ResponseEntity.ok(smartPhoneDTO);
     }
 
+
     @PostMapping("/save")
     public ResponseEntity<String> saveSmartPhone(
             @RequestParam ("smartPhoneDTO") String smartPhoneDTOJson,
@@ -34,7 +35,7 @@ public class SmartphoneController {
             SmartPhoneDTO smartPhoneDTO = convertJsonToDTO(smartPhoneDTOJson);
             smartPhoneService.saveSmartPhone(smartPhoneDTO,image);
 
-            return ResponseEntity.status(HttpStatus.CREATED).body("Smartphone saved successfully!");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Smartphone  saved successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving smartphone: " + e.getMessage());
         }
