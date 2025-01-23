@@ -8,6 +8,7 @@ import org.openapitools.model.PhoneSpecsResponseDTO;
 import  org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 
@@ -15,46 +16,37 @@ import java.util.List;
 public interface MobileSpecsClient {
 
     @GetMapping("/gsm/all-brands")
-    @Headers({
-            "x-rapidapi-key: 4c9a9eb06amsh18a6a44a3915cfcp1c27edjsnd3d7c7f4108d",
-            "x-rapidapi-host: mobile-phone-specs-database.p.rapidapi.com"
-    })
-    List<BrandDTO> getAllBrands();
+    List<BrandDTO> getAllBrands(@RequestHeader("x-rapidapi-key") String rapidApiKey, @RequestHeader("x-rapidapi-host") String rapidApiHost);
 
 
     @GetMapping("/gsm/get-specifications-by-phone-custom-id/{customId}")
-    @Headers({
-            "x-rapidapi-key: 4c9a9eb06amsh18a6a44a3915cfcp1c27edjsnd3d7c7f4108d",
-            "x-rapidapi-host: mobile-phone-specs-database.p.rapidapi.com"
-    })
-    PhoneSpecsResponseDTO getPhoneSpecsByCustomId(@PathVariable("customId") int customId);
+    PhoneSpecsResponseDTO getPhoneSpecsByCustomId(@RequestHeader("x-rapidapi-key") String rapidApiKey,
+                                                  @RequestHeader("x-rapidapi-host") String rapidApiHost,
+                                                  @PathVariable("customId") int customId);
 
 
 
     @GetMapping("/gsm/get-models-by-brandname/{brandName}")
-    @Headers({
-            "x-rapidapi-key: 4c9a9eb06amsh18a6a44a3915cfcp1c27edjsnd3d7c7f4108d",
-            "x-rapidapi-host: mobile-phone-specs-database.p.rapidapi.com"
-    })
-    List<ModelDTO> getModelsByBrandName(@PathVariable("brandName") String brandName);
+    List<ModelDTO> getModelsByBrandName(@RequestHeader("x-rapidapi-key") String rapidApiKey,
+                                        @RequestHeader("x-rapidapi-host") String rapidApiHost,
+                                        @PathVariable("brandName") String brandName);
 
 
 
     @GetMapping("/gsm/get-specifications-by-brandname-modelname/{brandName}/{modelName}")
-    @Headers({
-            "x-rapidapi-key: 4c9a9eb06amsh18a6a44a3915cfcp1c27edjsnd3d7c7f4108d",
-            "x-rapidapi-host: mobile-phone-specs-database.p.rapidapi.com"
-    })
+
     PhoneSpecsResponseDTO getSpecificationsByBrandAndModel(
+            @RequestHeader("x-rapidapi-key") String rapidApiKey,
+            @RequestHeader("x-rapidapi-host") String rapidApiHost,
             @PathVariable("brandName") String brandName,
             @PathVariable("modelName") String modelName
     );
 
 
     @GetMapping("/gsm/get-phone-images-links-by-phone-custom-id/{customId}")
-    @Headers({
-            "x-rapidapi-key: 4c9a9eb06amsh18a6a44a3915cfcp1c27edjsnd3d7c7f4108d",
-            "x-rapidapi-host: mobile-phone-specs-database.p.rapidapi.com"
-    })
-    List<PhoneImageDTO> getPhoneImagesByCustomId(@PathVariable("customId") int customId);
+    List<PhoneImageDTO> getPhoneImagesByCustomId(@RequestHeader("x-rapidapi-key") String rapidApiKey,
+                                                 @RequestHeader("x-rapidapi-host") String rapidApiHost,
+                                                 @PathVariable("customId") int customId);
+
+
 }

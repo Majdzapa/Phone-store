@@ -4,6 +4,7 @@ package com.smartphone.phoneStore.controller;
 import com.smartphone.phoneStore.service.MobileSpecsService;
 import lombok.RequiredArgsConstructor;
 import org.openapitools.model.BrandDTO;
+import org.openapitools.model.ModelDTO;
 import org.openapitools.model.PhoneImageDTO;
 import org.openapitools.model.PhoneSpecsResponseDTO;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,5 +44,11 @@ public class MobileSpecsController {
     @GetMapping("/linked-image/{customId}")
     public List<PhoneImageDTO> getPhoneImages(@PathVariable int customId) {
         return mobileSpecsService.getPhoneImagesByCustomId(customId);
+    }
+
+
+    @GetMapping("/brand/{brandName}")
+    public List<ModelDTO> getPhonesByBrandName(@PathVariable String brandName) {
+        return mobileSpecsService.getModelsByBrandName(brandName);
     }
 }
