@@ -1,10 +1,10 @@
 package com.smartphone.phoneStore.controller;
 
 
-import com.smartphone.phoneStore.dto.BrandDTO;
-import com.smartphone.phoneStore.dto.PhoneSpecsResponseDTO;
 import com.smartphone.phoneStore.service.MobileSpecsService;
 import lombok.RequiredArgsConstructor;
+import org.openapitools.model.BrandDTO;
+import org.openapitools.model.PhoneSpecsResponseDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

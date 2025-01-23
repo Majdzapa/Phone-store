@@ -1,6 +1,7 @@
 package com.smartphone.phoneStore.entity;
 
-import com.smartphone.phoneStore.dto.phonedetails.*;
+
+import org.openapitools.model.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;

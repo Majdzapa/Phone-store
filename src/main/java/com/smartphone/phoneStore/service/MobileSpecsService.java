@@ -1,14 +1,13 @@
 package com.smartphone.phoneStore.service;
 
-import com.smartphone.phoneStore.dto.BrandDTO;
-import com.smartphone.phoneStore.dto.PhoneSpecsResponseDTO;
 import com.smartphone.phoneStore.entity.BrandEntity;
 import com.smartphone.phoneStore.entity.PhoneSpecsEntity;
 import com.smartphone.phoneStore.feign.MobileSpecsClient;
 import com.smartphone.phoneStore.repository.BrandRepository;
 import com.smartphone.phoneStore.repository.PhoneSpecsRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.openapitools.model.BrandDTO;
+import org.openapitools.model.PhoneSpecsResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

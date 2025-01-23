@@ -1,8 +1,8 @@
 package com.smartphone.phoneStore.feign;
 
-import com.smartphone.phoneStore.dto.BrandDTO;
-import com.smartphone.phoneStore.dto.PhoneSpecsResponseDTO;
 import feign.Headers;
+import org.openapitools.model.BrandDTO;
+import org.openapitools.model.PhoneSpecsResponseDTO;
 import  org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
