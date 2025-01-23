@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Mobile Specs API
+  description: API for fetching mobile phone images by custom ID
+  version: 1.0.0
+servers:
+  - url: https://mobile-phone-specs-database.p.rapidapi.com
+    description: RapidAPI server
+
+paths:
+  /gsm/get-phone-images-links-by-phone-custom-id/{customId}:
+    get:
+      tags:
+        - Images
+      summary: Get phone images by custom ID
+      description: Returns a list of image links for the specified phone custom ID.
+      parameters:
+        - name: customId
+          in: path
+          required: true
+          description: The custom ID of the phone
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of phone images
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PhoneImageDTO'
+
+components:
+  schemas:
+    PhoneImageDTO:
+      type: object
+      properties:
+        imageId:
+          type: integer
+          example: 78606
+        imageName:
+          type: string
+          example: "samsung_galaxy-s22-ultra-5g_2022_1.webp"
+        imageOrder:
+          type: integer
+          example: 1
+        link:
+          type: string
+          example: "https://api-media.makingdatameaningful.com/files/gsm/7955/samsung_galaxy-s22-ultra-5g_2022_1.webp"

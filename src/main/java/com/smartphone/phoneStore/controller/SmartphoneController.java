@@ -20,7 +20,7 @@ public class SmartphoneController {
 
 
     @GetMapping("/{reference}")
-    public ResponseEntity<SmartPhoneDTO> getSmartPhoneByReference(@PathVariable String reference) {
+    public ResponseEntity<SmartPhoneDTO> getSmartPhoneByReference(@PathVariable String reference) throws IOException, InterruptedException {
 
         SmartPhoneDTO smartPhoneDTO = smartPhoneService.getSmartPhoneByReference(reference);
         return ResponseEntity.ok(smartPhoneDTO);

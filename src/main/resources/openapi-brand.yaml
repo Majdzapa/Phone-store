@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Mobile Specs API
+  description: API for fetching mobile phone models by brand name
+  version: 1.0.0
+servers:
+  - url: https://mobile-phone-specs-database.p.rapidapi.com
+    description: RapidAPI server
+
+paths:
+  /gsm/get-models-by-brandname/{brandName}:
+    get:
+      tags:
+        - Models
+      summary: Get mobile phone models by brand name
+      description: Returns a list of mobile phone models for the specified brand.
+      parameters:
+        - name: brandName
+          in: path
+          required: true
+          description: The name of the brand (e.g., Samsung)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of mobile phone models
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ModelDTO'
+
+components:
+  schemas:
+    ModelDTO:
+      type: object
+      properties:
+        modelValue:
+          type: string
+          description: The name of the mobile phone model
+          example: "Galaxy S22 Ultra 5G"
