@@ -119,11 +119,44 @@
 				<version>6.6.0</version> <!-- Use the latest version -->
 				<executions>
 					<execution>
+						<id>generate-api1</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
 							<inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
+							<generatorName>spring</generatorName>
+							<configOptions>
+								<useJakartaEe>true</useJakartaEe> <!-- Use Jakarta annotations -->
+								<interfaceOnly>true</interfaceOnly>
+								<useTags>true</useTags>
+							</configOptions>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>generate-api2</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/openapi-brand.yaml</inputSpec>
+							<generatorName>spring</generatorName>
+							<configOptions>
+								<useJakartaEe>true</useJakartaEe> <!-- Use Jakarta annotations -->
+								<interfaceOnly>true</interfaceOnly>
+								<useTags>true</useTags>
+							</configOptions>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>generate-api3</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/openapi-linked-images.yaml</inputSpec>
 							<generatorName>spring</generatorName>
 							<configOptions>
 								<useJakartaEe>true</useJakartaEe> <!-- Use Jakarta annotations -->

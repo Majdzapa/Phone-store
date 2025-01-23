@@ -7,6 +7,8 @@ import com.smartphone.phoneStore.repository.BrandRepository;
 import com.smartphone.phoneStore.repository.PhoneSpecsRepository;
 import lombok.RequiredArgsConstructor;
 import org.openapitools.model.BrandDTO;
+import org.openapitools.model.ModelDTO;
+import org.openapitools.model.PhoneImageDTO;
 import org.openapitools.model.PhoneSpecsResponseDTO;
 import org.springframework.stereotype.Service;
 
@@ -50,4 +52,18 @@ public class MobileSpecsService {
         phoneSpecsRepository.save(entity);
         return specs;
     }
+
+    public List<ModelDTO> getModelsByBrandName(String brandName) {
+        return mobileSpecsClient.getModelsByBrandName(brandName);
+    }
+
+
+    public PhoneSpecsResponseDTO getSpecificationsByBrandAndModel(String brandName, String modelName) {
+        return mobileSpecsClient.getSpecificationsByBrandAndModel(brandName, modelName);
+    }
+
+    public List<PhoneImageDTO> getPhoneImagesByCustomId(int customId) {
+        return mobileSpecsClient.getPhoneImagesByCustomId(customId);
+    }
+
 }
